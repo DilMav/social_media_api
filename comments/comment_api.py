@@ -1,45 +1,30 @@
 from fastapi import APIRouter
 
+from comments import CommentModel, EditCommentModel
 
 # Создать компонент
 comment_router = APIRouter(prefix='/comment', tags=['Работа с комментариями'])
 
 
-# Запрос на вход аккаунт
-@user_router.post('/post')
-async def post_user():
+# запрос на публикацию комментария
+@comment_router.post('/add_comment')
+async def add_comment(data: CommentModel):
     pass
 
 
-# Запрос на регистрацию аккаунта
-@user_router.put('/register_user')
-async def register_user():
+# запрос на изменение комментария
+@comment_router.put('/edit_comment')
+async def edit_comment(data: EditCommentModel):
     pass
 
 
-# Запрос на удаление поста
-@user_router.put('/user')
-async def change_user():
-    pass
-
-# Запрос на получение у другого пользователя
-@user_router.get('/user')
-async def get_user():
-    pass
-
-# Запрос на редакторивания комментария
-@user_router.put('/delete_comment')
-async def delete_comments():
+# запрос на удаление комментария
+@comment_router.delete('/delete_comment')
+async def delete_comment(comment_id: int):
     pass
 
 
-# Запрос на удаление комментария
-@user_router.delete('/delete_comment')
-async def delete_comments():
-    pass
-
-
-# Запрос на получение rj==комментарие к определённой публикации
-@user_router.get('/get_comments')
-async def get_comments():
+# запрос на получение комментариев к определенной публикации
+@comment_router.get('/get_comments')
+async def get_comments(post_id: int):
     pass
