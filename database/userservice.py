@@ -58,7 +58,7 @@ def add_profile_photo_db(user_id, photo):
 
 
 # Удалить фото профиля
-def delete_profile_phot_db(user_id):
+def delete_profile_photo_db(user_id):
     db = next(get_db())
 
     checker = db.query(User).filter_by(id=user_id).first()

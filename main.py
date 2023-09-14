@@ -6,6 +6,10 @@ from photo.photo_api import photo_router
 from post.user_post_api import posts_router
 from comments.comment_api import comment_router
 
+# для запуска БД
+from database import Base, engine
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI(docs_url='/')
 
 # Регистрация компонентов
