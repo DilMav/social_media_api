@@ -4,17 +4,17 @@ from pydantic import BaseModel
 # Валидатор для входа в аккаунт
 class LoginUserModel(BaseModel):
     email: str
-    passwors: str
+    password: str
 
 
 # Валидатор регистрации пользователя
 class RegisterUserModel(BaseModel):
-    name = str
-    surname = str
-    email = str
-    phone_number = str
-    city = str
-    password = str
+    name: str
+    surname: str
+    email: str
+    phone_number: str
+    city: str
+    password: str
 
 
 # Валидатор изменения данных пользователя

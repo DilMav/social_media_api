@@ -22,7 +22,7 @@ def add_comment_db(post_id, text, user_id):
 
 
 # Удалить комментарий
-def delete_comment_id(comment_id):
+def delete_comment_db(comment_id):
     db = next(get_db())
 
     exact_comment = db.query(Comment).filter_by(id=comment_id).first()

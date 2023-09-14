@@ -33,7 +33,7 @@ def add_post_photo_db(post_id, photo):
 
 
 # Изменить пост
-def edit_post_photo_db(post_id, user_id, new_text):
+def edit_post_db(post_id, user_id, new_text):
     db = next(get_db())
 
     exact_post = db.query(UserPost).filter_by(id=post_id, user_id=user_id).first()
@@ -52,8 +52,12 @@ def delete_post_db(post_id):
     db = next(get_db())
 
     exact_post = db.query(UserPost).filter_by(id=post_id).first()
+    exact_post_photos = db.query(PostPhoto).filter_by(post_id=post_id).all()
 
     if exact_post:
+        db.delete(*exact_post_photos)
+        db.commit()
+
         db.delete(exact_post)
         db.commit()
 
@@ -63,7 +67,7 @@ def delete_post_db(post_id):
 
 
 # Получить все посты
-def get_all_posts():
+def get_all_posts_db():
     db = next(get_db())
 
     all_posts = db.query(UserPost).all()
